@@ -1,6 +1,5 @@
 package com.rpsouza.droidchat.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -12,25 +11,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Turquoise80,
+    onPrimary = White,
+    primaryContainer = Turquoise30,
+    onPrimaryContainer = Turqouise90,
+    secondary = Green80,
+    onSecondary = Green20,
+    tertiary = Wildfire80,
+    onTertiary = Wildfire20,
+    surface = Neutral10,
+    onSurface = Neutral90,
+    onSurfaceVariant = Neutral60,
+    inverseSurface = White,
+    inverseOnSurface = Black,
+    error = ColorError,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Turquoise80,
+    onPrimary = White,
+    primaryContainer = Turqouise90,
+    onPrimaryContainer = Turqouise10,
+    secondary = Green40,
+    onSecondary = Black,
+    tertiary = Wildfire90,
+    onTertiary = Black,
+    surface = Surface,
+    onSurface = Neutral10,
+    onSurfaceVariant = Neutral60,
+    inverseSurface = Black,
+    inverseOnSurface = White,
+    error = ColorError,
 )
 
 @Composable
