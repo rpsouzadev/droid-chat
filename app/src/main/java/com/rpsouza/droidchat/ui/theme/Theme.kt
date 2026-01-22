@@ -49,7 +49,7 @@ private val LightColorScheme = lightColorScheme(
 fun DroidChatTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     sizing: Sizing = Sizing(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
