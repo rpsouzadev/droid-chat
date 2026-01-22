@@ -10,7 +10,7 @@ sealed interface DroidChatRouter {
     object AuthHome : DroidChatRouter
 
     @Serializable
-    object Login : DroidChatRouter
+    object SignIn : DroidChatRouter
 
     @Serializable
     object SignUp : DroidChatRouter
