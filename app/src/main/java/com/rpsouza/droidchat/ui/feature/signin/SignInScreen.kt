@@ -1,6 +1,5 @@
 package com.rpsouza.droidchat.ui.feature.signin
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,12 +12,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import com.rpsouza.droidchat.R
 import com.rpsouza.droidchat.ui.components.Logo
+import com.rpsouza.droidchat.ui.components.PrimaryButton
 import com.rpsouza.droidchat.ui.components.PrimaryTextField
 import com.rpsouza.droidchat.ui.theme.BackgroundGradient
 import com.rpsouza.droidchat.ui.theme.DroidChatTheme
@@ -59,6 +58,16 @@ private fun SignUpScreenContent() {
                 placeholder = stringResource(R.string.feature_login_password),
                 keyboardType = KeyboardType.Password,
             ) { text -> password = text }
+        }
+
+        Column(
+            modifier = Modifier.padding(top = DroidChatTheme.sizing.dp32),
+            verticalArrangement = Arrangement.spacedBy(DroidChatTheme.sizing.dp16)
+        ) {
+            PrimaryButton(
+                title = stringResource(R.string.feature_login_button),
+                isLoading = false,
+            ) { }
         }
     }
 }

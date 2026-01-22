@@ -13,6 +13,7 @@ data class Sizing(
     val dp4: Dp = 4.dp,
     val dp8: Dp = 8.dp,
     val dp16: Dp = 16.dp,
+    val dp18: Dp = 18.dp,
     val dp24: Dp = 24.dp,
     val dp32: Dp = 32.dp,
     val dp48: Dp = 48.dp,
