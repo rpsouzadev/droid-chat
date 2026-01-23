@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,16 +24,21 @@ import com.rpsouza.droidchat.ui.components.PrimaryButton
 import com.rpsouza.droidchat.ui.components.PrimaryTextField
 import com.rpsouza.droidchat.ui.theme.BackgroundGradient
 import com.rpsouza.droidchat.ui.theme.DroidChatTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun SignInScreen() {
-    SignUpScreenContent()
+fun SignInScreen(
+    viewModel: SignInViewModel = koinViewModel()
+) {
+    val state = viewModel.uiState.collectAsState().value
+    SignUpScreenContent(state = state, event = viewModel::onEvent)
 }
 
 @Composable
-private fun SignUpScreenContent() {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+private fun SignUpScreenContent(
+    state: SignInUiState,
+    event: (SignInUiEvent) -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,18 +55,18 @@ private fun SignUpScreenContent() {
             verticalArrangement = Arrangement.spacedBy(DroidChatTheme.sizing.dp16)
         ) {
             PrimaryTextField(
-                value = email,
+                value = state.email,
                 leftIcon = R.drawable.ic_envelope,
                 placeholder = stringResource(R.string.feature_login_email),
                 keyboardType = KeyboardType.Email,
-            ) { text -> email = text }
+            ) { email -> event(SignInUiEvent.EmailChanged(email)) }
 
             PrimaryTextField(
-                value = password,
+                value = state.password,
                 leftIcon = R.drawable.ic_lock,
                 placeholder = stringResource(R.string.feature_login_password),
                 keyboardType = KeyboardType.Password,
-            ) { text -> password = text }
+            ) { password -> event(SignInUiEvent.PasswordChanged(password)) }
         }
 
         Column(
@@ -69,8 +75,8 @@ private fun SignUpScreenContent() {
         ) {
             PrimaryButton(
                 title = stringResource(R.string.feature_login_button),
-                isLoading = false,
-            ) { }
+                isLoading = state.isLoading,
+            ) { event(SignInUiEvent.SignIn) }
         }
     }
 }
@@ -79,6 +85,9 @@ private fun SignUpScreenContent() {
 @Composable
 private fun SignInScreenPreview() {
     DroidChatTheme {
-        SignUpScreenContent()
+        SignUpScreenContent(
+            state = SignInUiState(),
+            event = {}
+        )
     }
 }
