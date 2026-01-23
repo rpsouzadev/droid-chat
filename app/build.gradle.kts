@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.kotlin.serialization.json)
     implementation(libs.splashscreen)
+    implementation(libs.koin)
+    implementation(libs.koin.navigation)
 
     // Test
     testImplementation(libs.junit)
