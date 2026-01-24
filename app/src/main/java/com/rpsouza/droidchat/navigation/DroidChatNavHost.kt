@@ -24,7 +24,11 @@ fun DroidChatNavHost(navController: NavHostController) {
             }
         }
         composable<DroidChatRouter.AuthHome> {}
-        composable<DroidChatRouter.SignIn> { SignInScreen() }
+        composable<DroidChatRouter.SignIn> {
+            SignInScreen(
+                onRegisterClick = { navController.navigate(route = DroidChatRouter.SignUp) }
+            )
+        }
         composable<DroidChatRouter.SignUp> {}
         composable<DroidChatRouter.HomeApp> {}
     }
