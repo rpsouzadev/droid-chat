@@ -59,6 +59,7 @@ private fun SignUpScreenContent(
                 leftIcon = R.drawable.ic_envelope,
                 placeholder = stringResource(R.string.feature_login_email),
                 keyboardType = KeyboardType.Email,
+                errorMessage = state.emailError?.let { stringResource(it) },
             ) { email -> event(SignInUiEvent.EmailChanged(email)) }
 
             PrimaryTextField(
@@ -66,6 +67,7 @@ private fun SignUpScreenContent(
                 leftIcon = R.drawable.ic_lock,
                 placeholder = stringResource(R.string.feature_login_password),
                 keyboardType = KeyboardType.Password,
+                errorMessage = state.passwordError?.let { stringResource(it) },
             ) { password -> event(SignInUiEvent.PasswordChanged(password)) }
         }
 

@@ -1,10 +1,12 @@
 package com.rpsouza.droidchat.ui.feature.signin
 
+import androidx.annotation.StringRes
+
 data class SignInUiState(
     val email: String = "",
-    val emailError: Int? = null,
+    @param:StringRes val emailError: Int? = null,
     val password: String = "",
-    val passwordError: Int? = null,
+    @param:StringRes val passwordError: Int? = null,
     val isLoading: Boolean = false,
     val isLoggedIn: Boolean = false,
     val errorMessageStringResId: Int? = null,

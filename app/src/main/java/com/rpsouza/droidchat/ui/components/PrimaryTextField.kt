@@ -116,7 +116,7 @@ fun PrimaryTextField(
                 text = it,
                 modifier = Modifier.padding(start = DroidChatTheme.sizing.dp4),
                 color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.labelMedium
             )
         }
     }
