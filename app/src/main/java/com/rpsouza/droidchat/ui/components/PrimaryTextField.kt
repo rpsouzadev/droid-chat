@@ -23,12 +23,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.rpsouza.droidchat.R
-import com.rpsouza.droidchat.ui.extension.isPassword
+import com.rpsouza.droidchat.extension.getVisualTransFormationForPassword
+import com.rpsouza.droidchat.extension.isPassword
 import com.rpsouza.droidchat.ui.theme.DroidChatTheme
 
 @Composable
@@ -87,12 +86,7 @@ fun PrimaryTextField(
                 input = it
                 onInputChange(it.text)
             },
-            visualTransformation = if (keyboardType.isPassword()) {
-                if (passwordVisibility) {
-                    VisualTransformation.None
-                } else PasswordVisualTransformation()
-
-            } else VisualTransformation.None,
+            visualTransformation = keyboardType.getVisualTransFormationForPassword(passwordVisibility),
             keyboardOptions = KeyboardOptions(
                 capitalization = if (keyboardType == KeyboardType.Text) {
                     KeyboardCapitalization.Sentences

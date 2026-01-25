@@ -31,12 +31,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.rpsouza.droidchat.R
-import com.rpsouza.droidchat.ui.extension.isPassword
+import com.rpsouza.droidchat.extension.getVisualTransFormationForPassword
+import com.rpsouza.droidchat.extension.isPassword
 import com.rpsouza.droidchat.ui.theme.ColorSuccess
 import com.rpsouza.droidchat.ui.theme.DroidChatTheme
 
@@ -63,7 +62,7 @@ fun SecondaryTextField(
             input = it
             onValueChange(it)
         },
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(color = Color.White),
         textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface),
@@ -76,12 +75,7 @@ fun SecondaryTextField(
         ),
         singleLine = true,
         maxLines = 1,
-        visualTransformation = if (keyboardType.isPassword()) {
-            if (passwordVisibility) {
-                VisualTransformation.None
-            } else PasswordVisualTransformation()
-
-        } else VisualTransformation.None,
+        visualTransformation = keyboardType.getVisualTransFormationForPassword(passwordVisibility),
         cursorBrush = SolidColor(MaterialTheme.colorScheme.onSurfaceVariant),
         decorationBox = { innerTextField ->
             Column(
