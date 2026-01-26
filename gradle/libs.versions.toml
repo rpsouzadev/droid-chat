@@ -10,7 +10,7 @@ kotlin = "2.3.0"
 composeBom = "2026.01.00"
 composeNavigation = "2.9.6"
 kotlinSerialization = "2.3.0"
-kotlinSerializationJson = "1.9.0"
+kotlinSerializationJson = "1.10.0"
 splashscreen = "1.2.0"
 koin = "4.1.1"
 
